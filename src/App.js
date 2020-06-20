@@ -1,4 +1,5 @@
 import React from "react";
+import Plaid from "./Plaid";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default function App() {
@@ -38,7 +39,7 @@ export default function App() {
 }
 
 function Home() {
-  return <h2>Home</h2>;
+  return <h2><Plaid></Plaid>Home</h2>;
 }
 
 function About() {
