@@ -2343,7 +2343,7 @@
     react-is "^16.13.0"
     use-subscription "^1.4.0"
 
-"@react-navigation/native@^5.2.1":
+"@react-navigation/native@^5.5.1":
   version "5.5.1"
   resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.5.1.tgz#e669d9561e54d86b1315637b8d5630dc55ee9383"
   integrity sha512-5pzsfvLdnvqfrWgTMCLDFaGK6Sj30p7tAMhUGneV2oGlx0OIbhgc6/04UUMpKEmAS2PaC/GZa1LQIsSVWDewvw==
