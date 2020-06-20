@@ -1,13 +1,9 @@
 import React from "react";
 
-import "./style.css";
+import "./style.less";
 
 const Dashboard = () => {
-    return(
-        <div className="dashboard">
-            Dashboard 
-        </div>
-    );
-}
+  return <div className="dashboard">Dashboard</div>;
+};
 
 export default Dashboard;

@@ -1,13 +1,9 @@
 import React from "react";
 
-import "./style.css";
+import "./style.less";
 
 const Signup = () => {
-    return(
-        <div className="signup">
-            Signup
-        </div>
-    );
-}
+  return <div className="signup">Signup</div>;
+};
 
 export default Signup;

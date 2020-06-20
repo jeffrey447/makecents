@@ -1,13 +1,9 @@
 import React from "react";
 
-import "./style.css";
+import "./style.less";
 
 const Login = () => {
-    return(
-        <div className="login">
-            Login 
-        </div>
-    );
-}
+  return <div className="login">Login</div>;
+};
 
 export default Login;

@@ -1,13 +1,9 @@
 import React from "react";
 
-import "./style.css";
+import "./style.less";
 
 const LandingPage = () => {
-    return(
-        <div className="landing-page">
-            Landing Page
-        </div>
-    );
-}
+  return <div className="landing-page">Landing Page</div>;
+};
 
 export default LandingPage;
