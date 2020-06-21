@@ -140,3 +140,5 @@ router.get('/:uid/createStripeToken', async (req, res) => {
         }
     }
 });
+
+module.exports = router;
