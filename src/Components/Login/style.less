@@ -1,21 +1,48 @@
-.login {
-    .logo {
-        width: 277px;
-        height: 49px;
-        margin-left: 50px;
-        margin-top: 40px;
+.login-container {
+    background-color: black;
+    height: 100vh;
+
+    img {
+        margin: 2% auto auto 2%;
     }
-    .login-form {
-        //display: flex;
-        //justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        .login-title {
+
+    .login-header {
+        display: flex;
+        justify-content: center;
+
+        h1 {
             color: white;
-            font-family: 'Montserrat';
-            font-size: 64px;
-            
+            font-size: 5em;
+        }
+    }
+
+    .login-interface {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 80%;
+    }
+
+    .input-container {
+        display: flex;
+        justify-content: center;
+
+        #loginform {
+            width: 25%;
+        }
+
+        .input-field {
+            margin-bottom: 15%;
+
+            input, span {
+                border-radius: 5px;
+            }
+        }
+    }
+
+    .input-button {
+        button {
+            width: 100%;
         }
     }
 }

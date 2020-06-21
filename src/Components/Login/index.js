@@ -1,70 +1,65 @@
 import React from "react";
-import Logo from "../../Assets/logo.svg";
-import { Form, Input, Button, Checkbox } from 'antd';
+import logo from '../../Assets/Logo.png';
+import { Form, Button, Input } from 'antd';
+import fbase from '../../firebase';
 import "./style.less";
 
 const Login = () => {
-  const onFinish = values => {
-    console.log('Success:', values);
-  };
 
-  const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
-  };
+    const handleLogin = values => {
+        // handle login stuff
+        console.log(values);
 
-  return (
-    <div className="login">
-      <img src={Logo} alt="Make Cents Logo" className="logo" />
-      <div className="login-form">
-        <h1 className="login-title">Login</h1>
-        <Form
-        
-          name="basic"
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-        >
-          <Form.Item
-            label="Username"
-            name="username"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your username!',
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
+        try {
+            fbase.login(values.email, values.password)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your password!',
-              },
-            ]}
-          >
-            <Input.Password />
-          </Form.Item>
-
-          <Form.Item name="remember" valuePropName="checked">
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
-
-          <Form.Item >
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
-        </Form>
-      </div>
-    </div>
-  );
+    return (
+        <div className="login-container">
+            <img alt="Make Cents" src={logo} height="50"></img>
+            <div className="login-interface">
+                <div className="login-header">
+                    <h1>Log In</h1>
+                </div>
+                <div className="input-container">
+                    <Form id="loginform" onFinish={handleLogin}>
+                        <div className="input-field">
+                            <Form.Item name="email" rules={[
+                                {
+                                    type: 'email',
+                                    message: 'Invalid email!'
+                                },
+                                {
+                                    required: true,
+                                    message: 'Please input your email.'
+                                }
+                            ]}>
+                                <Input size="large" placeholder="Email" />
+                            </Form.Item>
+                        </div>
+                        <div className="input-field">
+                            <Form.Item name="password" rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your password.'
+                                }
+                            ]}>
+                                <Input.Password size="large" placeholder="Password" />
+                            </Form.Item>
+                        </div>
+                        <div className="input-button">
+                            <Form.Item>
+                                <Button shape="round" size="large" htmlType="submit">Log In</Button>
+                            </Form.Item>
+                        </div>
+                    </Form>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default Login;
