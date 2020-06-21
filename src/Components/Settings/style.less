@@ -1,5 +1,4 @@
 .settings {
-  padding: 16px;
   width: 100%;
 
   .settings-content {
@@ -7,9 +6,10 @@
     flex-direction: row;
     width: 100%;
     justify-content: space-evenly;
-    margin-top: 150px;
+    margin-top: 100px;
     .account {
       width: 40%;
+      margin-left: 110px;
       .account-title {
         color: white;
         font-family: "Montserrat";
@@ -41,9 +41,18 @@
         font-family: "Montserrat";
       }
       .org {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         .org-logo {
-          height: 120px;
-          width: 120px;
+          height: 100px;
+          width: 100px;
+        }
+        .org-buttons {
+          display: flex;
+          flex-direction: column;
+          margin-left: 50px;
         }
       }
     }
