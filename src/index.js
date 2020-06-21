@@ -24,27 +24,13 @@ const App = () => {
   return (
     <Router>
       <Switch>
-        <Route exact path="/dashboard">
-          <Dashboard />
-        </Route>
-        <Route exact path="/history">
-          <History />
-        </Route>
-        <Route exact path="/">
-          <LandingPage />
-        </Route>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <Route exact path="/selectorg">
-          <SelectOrg />
-        </Route>
-        <Route exact path="/settings">
-          <Settings />
-        </Route>
-        <Route exact path="/signup">
-          <Signup />
-        </Route>
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/history" component={History} />
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/selectorg" component={SelectOrg} />
+        <Route exact path="/settings" component={Settings} />
+        <Route exact path="/signup" component={Signup} />
       </Switch>
     </Router>
   );

@@ -4,13 +4,16 @@ import { Form, Button, Input } from 'antd';
 import fbase from '../../firebase';
 import "./style.less";
 
-const Login = () => {
+const Login = ({ history }) => {
 
     const handleLogin = values => {
         // handle login stuff
         console.log(values);
-
-        fbase.login(values.email, values.password)
+        const success = fbase.login(values.email, values.password)
+        console.log(success)
+        if (success) {
+            history.push("/dashboard")
+        }
     }
 
     return (

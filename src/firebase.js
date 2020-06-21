@@ -21,9 +21,9 @@ class Firebase {
         this.db = app.database();
     }
 
-    login = (email, password, onSuccess, onError) => {
-        this.auth.signInWithEmailAndPassword(email, password)
-            .then(onSuccess)
+    login = async (email, password, onSuccess, onError) => {
+        await this.auth.signInWithEmailAndPassword(email, password)
+            .then(onSuccess => onSuccess)
             .catch(onError => console.log(onError.message));
     }
 
@@ -31,13 +31,8 @@ class Firebase {
         this.auth.signOut();
     }
 
-    register = (name, email, password, onSuccess, onError) => {
-        if (!(name.trim().length > 0)) {
-            onError("Must provide your name.");
-            return;
-        }
-
-        this.auth.createUserWithEmailAndPassword(email, password)
+    register = async (name, email, password, onSuccess, onError) => {
+        await this.auth.createUserWithEmailAndPassword(email, password)
             .then((data) => {
                 this.db.ref(`/users/${data.user.uid}`)
                     .set({
@@ -56,10 +51,10 @@ class Firebase {
                         // can create more fields later
                     }).then(() => {
                         console.log("Created new user!");
-                        onSuccess(data);
-                    }).catch(onError);
+                        return data;
+                    }).catch(onError => console.log(onError.message));
             })
-            .catch(onError);
+            .catch(onError => console.log(onError.message));
 
     }
 
