@@ -18,7 +18,7 @@ class Firebase {
         app.initializeApp(firebaseConfig);
 
         this.auth = app.auth();
-        this.db = app.database();
+        this.db = app.database().ref();
     }
 
     login = (email, password, onSuccess, onError) => {
@@ -39,8 +39,7 @@ class Firebase {
 
         this.auth.createUserWithEmailAndPassword(email, password)
             .then((data) => {
-                this.db.collection('users')
-                    .doc(data.user.uid)
+                this.db.ref(`/users/${data.user.uid}`)
                     .set({
                         name: name,
                         email: email,
@@ -61,7 +60,7 @@ class Firebase {
                     }).catch(onError);
             })
             .catch(onError);
-
+        
     }
 
     loggedIn = () => {
