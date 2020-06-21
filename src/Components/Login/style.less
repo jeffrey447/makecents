@@ -12,15 +12,31 @@
 
         h1 {
             color: white;
+            font-size: 5em;
         }
+    }
+
+    .login-interface {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 80%;
     }
 
     .input-container {
         display: flex;
         justify-content: center;
 
+        #loginform {
+            width: 25%;
+        }
+
         .input-field {
             margin-bottom: 15%;
+
+            input, span {
+                border-radius: 5px;
+            }
         }
     }
 
