@@ -4,12 +4,12 @@ import Header from "../Header";
 
 import "./style.less";
 
-const History = () => {
+const About = () => {
   return (
-    <div className="history">
+    <div className="about">
       <Header />
     </div>
   );
 };
 
-export default History;
+export default About;
