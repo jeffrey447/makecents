@@ -36,6 +36,7 @@ router.post('/:uid/add_bank', async (req, res) => {
     // receive post data
     var token = req.body.token;
     var name = req.body.name; // bank name
+    var id = req.body.id; // account id
 
     if (!userData) {
         res.json({
@@ -47,7 +48,8 @@ router.post('/:uid/add_bank', async (req, res) => {
             await db.ref(`/users/${uid}`).update({
                 bank: {
                     token: token,
-                    name: name
+                    name: name,
+                    id: id
                 }
             });
     
@@ -77,7 +79,8 @@ router.post('/:uid/remove_bank', async (req, res) => {
             await db.ref(`/users/${uid}`).update({
                 bank: {
                     token: null,
-                    name: null
+                    name: null,
+                    id: null
                 }
             });
     
