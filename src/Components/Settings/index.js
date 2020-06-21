@@ -5,10 +5,11 @@ import fbase from '../../firebase';
 
 import { PlaidLink } from 'react-plaid-link';
 
-import { Button } from "antd";
+import { Button, Form, Input } from "antd";
 import { Link } from "react-router-dom";
 
 import Logo from "../../Assets/logo.svg";
+import BLM from "../../Assets/BLM.png";
 
 import "./style.less";
 
@@ -17,12 +18,8 @@ const Settings = ({ history }) => {
 
     const onSuccess = (token, metadata) => {
         //console.log(token);
-        //console.log(metadata);
+        console.log(metadata);
 
-        /*
-            if you wanted to remove their bank, you can just provide a
-                null token and null name. it's equivalent.
-        */
         axios.post(`http://localhost:5000/api/users/${user.uid}/add_bank`, {
             token: token,
             name: metadata.institution.name
@@ -93,8 +90,45 @@ const Settings = ({ history }) => {
                     </Link>
                     </div>
                 </div>
-                <div className="account">
-                    <h1 className="account-title">Account</h1>
+                <div className="settings-content">
+                    <div className="account">
+                        <h1 className="account-title">Account</h1>
+                        <h4 className="email-title">Email</h4>
+                        <div className="email-input">
+                            <Form.Item name="email" rules={[
+                                {
+                                type: 'email',
+                                message: 'Invalid email!'
+                                },
+                                {
+                                required: true,
+                                message: 'Please input a valid email.'
+                                }
+                            ]}>
+                                <Input size="large" defaultValue={user.email} placeholder="Email" />
+                            </Form.Item>
+                            <Button className="email-reset" size="medium">Reset</Button>
+                        </div>
+                        <h4 className="password-title">Password</h4>
+                        <div className="password-input">
+                            <Form.Item name="password" rules={[
+                                {
+                                required: true,
+                                message: 'Please input a valid password.'
+                                }
+                            ]}>
+                                <Input.Password size="large" defaultValue="********************" placeholder="Password" />
+                            </Form.Item>
+                            <Button className="password-reset" size="medium">Reset</Button>
+                        </div>
+                    </div>
+                    <div className="payment">
+                        <h1 className="payment-title">Payment and Organizations</h1>
+                        <Button className="add-org" size="medium">Add a new organization</Button>
+                        <div className="org">
+                            <img src={BLM} alt="BLM" className="org-logo"/>
+                        </div>
+                    </div>
                 </div>
                 <PlaidLink
                     clientName="Makes Cents"
