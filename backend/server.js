@@ -13,7 +13,7 @@ app.use(function(req, res, next) {
     next();
 });
 
-// configure routes
+// configure API routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/plaid', require('./routes/plaid'));
 
