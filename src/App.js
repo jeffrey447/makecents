@@ -1,4 +1,5 @@
 import React from "react";
+import WebFont from "webfontloader";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -8,6 +9,15 @@ import LandingPage from "./Components/LandingPage";
 import Login from "./Components/Login";
 import Settings from "./Components/Settings";
 import Signup from "./Components/Signup";
+
+WebFont.load({
+  google: {
+    families: [
+      "Raleway:100,200,300,400,500,600,700,800,900",
+      "Montserrat:100,200,300,400,500,600,700,800,900",
+    ],
+  },
+});
 
 const App = () => {
   return (
@@ -39,22 +49,22 @@ const App = () => {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/dashboard">
+          <Route exact path="/dashboard">
             <Dashboard />
           </Route>
-          <Route path="/history">
+          <Route exact path="/history">
             <History />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <LandingPage />
           </Route>
-          <Route path="/login">
+          <Route exact path="/login">
             <Login />
           </Route>
-          <Route path="/settings">
+          <Route exact path="/settings">
             <Settings />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <Signup />
           </Route>
         </Switch>
