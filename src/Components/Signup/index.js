@@ -9,11 +9,11 @@ const Signup = ({ history }) => {
   const handleSignup = values => {
     // handle signup stuff
     console.log(values);
-    const user = fbase.register(values.name, values.email, values.password);
-    console.log(user)
-    if (user) {
-      history.push("/dashboard")
-    }
+    fbase.register(values.name, values.email, values.password, (data) => {
+      history.push("/dashboard");
+    }, (error) => {
+      console.log(error);
+    });
   }
 
   return (

@@ -9,11 +9,11 @@ const Login = ({ history }) => {
     const handleLogin = values => {
         // handle login stuff
         console.log(values);
-        const success = fbase.login(values.email, values.password)
-        console.log(success)
-        if (success) {
-            history.push("/dashboard")
-        }
+        fbase.login(values.email, values.password, (data) => {
+            history.push("/dashboard");
+        }, (error) => {
+            console.log(error);
+        });
     }
 
     return (
