@@ -51,7 +51,7 @@ const Dashboard = ({ history }) => {
             alignItems: "center",
           }}
         >
-          <h1 style={{ color: "white" }}>Donation Activity</h1>
+          <h1 style={{ color: "white", fontSize: 40 }}>Donation Activity</h1>
           <div>
             <DatePicker style={{ width: 200 }} />
             <Select defaultValue="jack" style={{ width: 200, marginLeft: 16 }}>
@@ -61,6 +61,8 @@ const Dashboard = ({ history }) => {
               <Option value="jack">Jack</Option>
             </Select>
           </div>
+
+          <canvas id="myChart" width="400" height="400"></canvas>
         </div>
       </div>
     );
