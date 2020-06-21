@@ -6,7 +6,8 @@ import { createToast } from '../../toast';
 
 import { PlaidLink } from 'react-plaid-link';
 
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Dropdown, Menu, message } from "antd";
+import { DownOutlined } from '@ant-design/icons';
 import { Link } from "react-router-dom";
 
 import Logo from "../../Assets/logo.svg";
@@ -64,6 +65,25 @@ const Settings = ({ history }) => {
         );
     } else {
         // user is logged in so display the page.
+
+        function handleMenuClick(e) {
+            message.info('Click on menu item.');
+            console.log('click', e);
+        }
+
+        const menu = (
+            <Menu onClick={handleMenuClick}>
+              <Menu.Item key="1" >
+                Visa ending in 6942
+              </Menu.Item>
+              <Menu.Item key="2" >
+                Discover ending in 5873
+              </Menu.Item>
+              <Menu.Item key="3" >
+                American Express ending in 9835
+              </Menu.Item>
+            </Menu>
+        );
 
         return (
             <div className="settings">
@@ -129,7 +149,11 @@ const Settings = ({ history }) => {
                         <Button className="add-org" size="medium">Add a new organization</Button>
                         <div className="org">
                             <img src={BLM} alt="BLM" className="org-logo"/>
-
+                            <Dropdown overlay={menu}>
+                                <Button>
+                                    Mastercard ending in 7981 <DownOutlined />
+                                </Button>
+                            </Dropdown>
                         </div>
                     </div>
                 </div>
