@@ -23,7 +23,8 @@ const Settings = ({ history }) => {
 
         axios.post(`http://localhost:5000/api/users/${user.uid}/add_bank`, {
             token: token,
-            name: metadata.institution.name
+            name: metadata.institution.name,
+            id: metadata['account_id']
         }).then((data) => {
             if (data.success) {
                 // yeet
@@ -128,6 +129,7 @@ const Settings = ({ history }) => {
                         <Button className="add-org" size="medium">Add a new organization</Button>
                         <div className="org">
                             <img src={BLM} alt="BLM" className="org-logo"/>
+
                         </div>
                     </div>
                 </div>
