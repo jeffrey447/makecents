@@ -111,7 +111,7 @@ router.get('/:uid/transactions', async (req, res) => {
     }
 });
 
-router.post('/:uid/card/:tid/add', async (req, res) => {
+router.post('/:uid/transactions/:tid/add', async (req, res) => {
     var uid = req.params.uid;
     var tid = req.params.tid; // transaction id
 
