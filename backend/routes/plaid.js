@@ -10,7 +10,7 @@ require('dotenv').config();
 var plaid = require('plaid');
 var client = new plaid.Client(
     process.env.REACT_APP_PLAID_CLIENT_ID,
-    process.env.REACT_APP_SECRET,
+    process.env.REACT_APP_PLAID_SECRET,
     process.env.REACT_APP_PUBLIC_KEY,
     plaid.environments.sandbox
 );
