@@ -30,14 +30,12 @@ const LandingPage = () => {
         <div className="paragraph-button">
           <p className="paragraph">
             We live in a world where black communities live in fear because of
-            injustice, state-sanctioned violence and anti-Black racism. Only
-            together and through action are we able to make a change. <br></br><br></br>Make Cents
-            is a platform that allows users regardless of age, sex, and
-            orientation help eradicate all this injustice. Users are able to
-            automatically donate spare change to various origanizations that
-            support black communities fight injustice. <br></br><br></br>Sign up now and donate your
-            spare change to an issue that makes sense.
-          </p>
+            injustice, state-sanctioned violence, and anti-Black racism. Only
+            together and through action are we able to make a change. </p> <p className="paragraph">Make Cents
+            is a platform that enables you to automatically donate spare change to various organizations that
+            support black communities in fighting injustice.</p><p className="paragraph">Sign up now and donate your
+            spare change to an issue that makes sense.</p>
+          
           <Link to="/signup">
             <Button className="sign-up" size="large">
               Sign Up
