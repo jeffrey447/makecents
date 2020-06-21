@@ -46,11 +46,11 @@ router.get('/:uid/getTransactions', async (req, res) => {
         } else {
             if (userData.bank && userData.bank.token) {
                 try {
-                    var res = await client.exchangePublicToken(userData.bank.token);
-                    var accessToken = res.access_token;
+                    var resp = await client.exchangePublicToken(userData.bank.token);
+                    var accessToken = resp.access_token;
                     
-                    res = await client.getTransactions(accessToken, startDate, endDate);
-                    var trans = res.transactions;
+                    resp = await client.getTransactions(accessToken, startDate, endDate);
+                    var trans = resp.transactions;
     
                     res.json({
                         success: true,
@@ -84,11 +84,11 @@ router.get('/:uid/getAccounts', async (req, res) => {
     } else {
         if (userData.bank && userData.bank.token) {
             try {
-                var res = await client.exchangePublicToken(userData.bank.token);
-                var accessToken = res.access_token;
+                var resp = await client.exchangePublicToken(userData.bank.token);
+                var accessToken = resp.access_token;
 
-                res = await client.getAccounts(accessToken);
-                var accs = res.accounts;
+                resp = await client.getAccounts(accessToken);
+                var accs = resp.accounts;
 
                 res.json({
                     success: true,
@@ -121,12 +121,12 @@ router.get('/:uid/createStripeToken', async (req, res) => {
     } else {
         if (userData.bank && userData.bank.token && userData.bank.id) {
             try {
-                var res = await client.exchangePublicToken(userData.bank.token);
-                var accessToken = res.access_token;
+                var resp = await client.exchangePublicToken(userData.bank.token);
+                var accessToken = resp.access_token;
 
                 // now we generate a bank token
-                res = await client.createStripeToken(accessToken, userData.bank.id);
-                var bankToken = res.stripe_bank_account_token;
+                resp = await client.createStripeToken(accessToken, userData.bank.id);
+                var bankToken = resp.stripe_bank_account_token;
 
                 res.json({
                     success: true,
