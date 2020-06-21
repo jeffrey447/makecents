@@ -11,7 +11,7 @@ const Login = () => {
 
     return (
         <div className="login-container">
-            <img alt="Make Cents" src={logo}></img>
+            <img alt="Make Cents" src={logo} height="50"></img>
             <div className="login-header">
                 <h1>Log In</h1>
             </div>
