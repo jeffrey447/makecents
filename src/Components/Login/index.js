@@ -1,10 +1,17 @@
 import React from "react";
-
+import logo from '../../Assets/Logo.png';
 import "./style.less";
 
 const Login = () => {
+    const handleLogin = (event) => {
+        event.preventDefault();
+
+        // handle login stuff
+    }
+
     return (
         <div className="login-container">
+            <img alt="Make Cents" src={logo}></img>
             <div className="login-header">
                 <h1>Log In</h1>
             </div>
