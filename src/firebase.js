@@ -1,6 +1,6 @@
 import app, { analytics } from 'firebase/app';
 import 'firebase/firebase-auth';
-import 'firebase/firebase-firestore';
+import 'firebase/database';
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -18,7 +18,7 @@ class Firebase {
         app.initializeApp(firebaseConfig);
 
         this.auth = app.auth();
-        this.db = app.database().ref();
+        this.db = app.database();
     }
 
     login = (email, password, onSuccess, onError) => {
@@ -60,7 +60,7 @@ class Firebase {
                     }).catch(onError);
             })
             .catch(onError);
-        
+
     }
 
     loggedIn = () => {

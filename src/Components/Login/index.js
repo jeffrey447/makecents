@@ -1,7 +1,7 @@
 import React from "react";
 import logo from '../../Assets/Logo.png';
 import { Form, Button, Input } from 'antd';
-//import fbase from '../../firebase';
+import fbase from '../../firebase';
 import "./style.less";
 
 const Login = () => {
@@ -10,7 +10,7 @@ const Login = () => {
         // handle login stuff
         console.log(values);
 
-        //fbase.login(values.email, values.password)
+        fbase.login(values.email, values.password)
     }
 
     return (
