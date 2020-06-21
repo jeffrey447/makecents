@@ -17,12 +17,38 @@ import Header from "../Header";
 
 import "./style.less";
 
+function loadCards(user) {
+  axios.get(`http://localhost:5000/api/users/${user.uid}`)
+    .then((res) => {
+      var data = res.data;
+      if (data.success) {
+        var userData = data.user;
+        if (userData.bank && userData.bank.token) {
+          axios.get(`http://localhost:5000/api/plaid/${user.uid}/getAccounts`)
+            .then((res1) => {
+              var data1 = res1.data;
+              console.log(data1);
+              if (data1.success) {
+                console.log(data1.accounts);
+              } else {
+                console.log("abc");
+                createToast(data1.error);
+              }
+            }).catch((error) => { createToast(error.message); });
+        }
+      } else {
+        console.log("def");
+        createToast(data.error);
+      }
+    }).catch((error) => { createToast(error.message); });
+};
+
 const Settings = ({ history }) => {
   const [user, loading, error] = useAuthState(fbase.auth);
 
   const onSuccess = (token, metadata) => {
     //console.log(token);
-    console.log(metadata);
+    //console.log(metadata);
 
     axios
       .post(`http://localhost:5000/api/users/${user.uid}/add_bank`, {
@@ -30,14 +56,17 @@ const Settings = ({ history }) => {
         name: metadata.institution.name,
         id: metadata["account_id"],
       })
-      .then((data) => {
+      .then((res) => {
+        var data = res.data;
         if (data.success) {
-          // yeet
+          loadCards(user);
         } else {
+          //console.log("jeff");
           createToast(data.error);
         }
       })
       .catch((error) => {
+        //console.log("thang");
         createToast(error);
       });
   };
@@ -139,26 +168,20 @@ const Settings = ({ history }) => {
           </div>
           <div className="payment">
             <h1 className="payment-title">Payment and Organizations</h1>
-            <div classname="payment-buttons">
-              <Link to="/selectorg">
-                <Button className="add-org" size="large" style={{ borderRadius: 5 }}>
-                  Add a new organization
+            <div className="payment-buttons">
+                <Link to="/selectorg">
+                    <Button className="add-org" size="large" style={{borderRadius: 5}}>
+                    Add a new organization
                     </Button>
-              </Link>
-              <PlaidLink
+                </Link>
+                <PlaidLink
                 clientName="Makes Cents"
                 env="sandbox"
                 product={["auth", "transactions"]}
                 publicKey={process.env.REACT_APP_PLAID_PUBLIC_KEY}
                 onSuccess={onSuccess}
-                style={{
-                  height: '40px',
-                  marginLeft: 15,
-                  padding: '6.4px 15px',
-                  outline: '0',
-                  border: '1px'
-                }}
-              >
+                style={{marginLeft: 15}}
+                >
                 Connect a bank account
                 </PlaidLink>
             </div>
@@ -166,22 +189,22 @@ const Settings = ({ history }) => {
               <img src={BLM} alt="BLM" className="org-logo" />
               <div className="org-buttons">
                 <Dropdown overlay={menu}>
-                  <Button >
+                    <Button >
                     Mastercard ending in 7981 <DownOutlined />
-                  </Button>
+                    </Button>
                 </Dropdown>
-                <Button danger={true} style={{ width: 175, marginTop: 25 }}>Delete Organization</Button>
+                <Button danger={true} style={{width: 175, marginTop: 25}}>Delete Organization</Button>
               </div>
             </div>
             <div className="org">
               <img src={LDF} alt="LDF" className="org-logo" />
               <div className="org-buttons">
                 <Dropdown overlay={menu}>
-                  <Button >
+                    <Button >
                     Mastercard ending in 7981 <DownOutlined />
-                  </Button>
+                    </Button>
                 </Dropdown>
-                <Button danger={true} style={{ width: 175, marginTop: 25 }}>Delete Organization</Button>
+                <Button danger={true} style={{width: 175, marginTop: 25}}>Delete Organization</Button>
               </div>
             </div>
           </div>
