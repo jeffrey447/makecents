@@ -1,4 +1,4 @@
-import app, { analytics } from 'firebase/app';
+import app from 'firebase/app';
 import 'firebase/firebase-auth';
 import 'firebase/database';
 
@@ -26,7 +26,7 @@ class Firebase {
             .then((data) => {
                 if (onSuccess) onSuccess(data);
             })
-            .catch(onError => console.log(onError.message));
+            .catch(onError);
     }
 
     logout = () => {
@@ -49,7 +49,13 @@ class Firebase {
                                 donation
                             }
                             */
-                        }
+                        },
+                        bank: {
+                            token: null,
+                            name: null
+                        },
+                        total_donation: 0 // overall
+
                         // can create more fields later
                     }).then(() => {
                         console.log("Created new user!");
