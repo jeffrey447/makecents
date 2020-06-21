@@ -10,11 +10,7 @@ const Login = () => {
         // handle login stuff
         console.log(values);
 
-        try {
-            fbase.login(values.email, values.password)
-        } catch (error) {
-            console.log(error)
-        }
+        fbase.login(values.email, values.password)
     }
 
     return (
