@@ -1,108 +1,51 @@
-.settings{
-    padding: 16px;
+.settings {
+  padding: 16px;
+  width: 100%;
+
+  .settings-content {
+    display: flex;
+    flex-direction: row;
     width: 100%;
-    .header {
+    justify-content: space-evenly;
+    margin-top: 150px;
+    .account {
+      width: 40%;
+      .account-title {
+        color: white;
+        font-family: "Montserrat";
+      }
+      .email-title {
+        color: white;
+        font-family: "Montserrat";
+      }
+      .email-input {
+        width: 50%;
+      }
+      .password-title {
+        color: white;
+        font-family: "Montserrat";
+        margin-top: 25px;
+      }
+      .password-input {
+        width: 50%;
+      }
+    }
+
+    .payment {
+      width: 40%;
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
-  
-      .logo {
-        width: 277px;
-        height: 49px;
+      .payment-title {
+        color: white;
+        font-family: "Montserrat";
       }
-  
-      .buttons {
-        display: flex;
-        flex-direction: row;
-        
-        .dashboard-button {
-            background-color: black;
-            border-color: black;
-            color: white;
-            font-family: "Montserrat";
-            font-weight: 600;
-            margin-right: 16px;
-          }
-
-        .about-button {
-            background-color: black;
-            border-color: black;
-            color: white;
-            font-family: "Montserrat";
-            font-weight: 600;
-            margin-right: 16px;
-          }
-
-        .settings-button {
-          background-color: black;
-          border-color: black;
-          color: white;
-          font-family: "Montserrat";
-          font-weight: 600;
-          margin-right: 16px;
-        }
-  
-        .log-out {
-            background-color: black;
-            border-color: black;
-            color: white;
-            font-family: "Montserrat";
-            font-weight: 600;
-            margin-right: 16px;
+      .org {
+        .org-logo {
+          height: 120px;
+          width: 120px;
         }
       }
     }
-  
-    .settings-content {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      justify-content: space-evenly;
-      margin-top: 150px;
-      .account {
-        width: 40%;
-        .account-title {
-          color: white;
-          font-family: "Montserrat";
-        }
-        .email-title {
-          color: white;
-          font-family: "Montserrat";
-        }
-        .email-input {
-          width: 50%;
-        }
-        .password-title {
-          color: white;
-          font-family: "Montserrat";
-          margin-top: 25px;
-        }
-        .password-input {
-          width: 50%;
-        }
-      }
-  
-      .payment {
-        width: 40%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        .payment-title {
-          color: white;
-          font-family: "Montserrat";
-        }
-        .org {
-          .org-logo {
-            height: 120px;
-            width: 120px;
-          }
-        }
-      }
-
-    }
-    
+  }
 }
-
-  
-  
