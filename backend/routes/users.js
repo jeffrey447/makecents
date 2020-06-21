@@ -1,9 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+var firebase = require('../firebase').default;
+var db = firebase.database();
+
+router.post('/:uid/transactions', (req, res) => {
+    var uid = req.params.uid;
+    
 });
 
 module.exports = router;
