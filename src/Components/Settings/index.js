@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -17,35 +17,37 @@ import Header from "../Header";
 
 import "./style.less";
 
-function loadCards(user) {
-  axios.get(`http://localhost:5000/api/users/${user.uid}`)
-    .then((res) => {
-      var data = res.data;
-      if (data.success) {
-        var userData = data.user;
-        if (userData.bank && userData.bank.token) {
-          axios.get(`http://localhost:5000/api/plaid/${user.uid}/getAccounts`)
-            .then((res1) => {
-              var data1 = res1.data;
-              console.log(data1);
-              if (data1.success) {
-                console.log(data1.accounts);
-              } else {
-                console.log("abc");
-                createToast(data1.error);
-              }
-            }).catch((error) => { createToast(error.message); });
-        }
-      } else {
-        console.log("def");
-        createToast(data.error);
-      }
-    }).catch((error) => { createToast(error.message); });
-};
 
 const Settings = ({ history }) => {
   const [user, loading, error] = useAuthState(fbase.auth);
+  const [accounts, setAccounts] = useState([]);
 
+  function loadCards(user) {
+    axios.get(`http://localhost:5000/api/users/${user.uid}`)
+      .then((res) => {
+        var data = res.data;
+        if (data.success) {
+          var userData = data.user;
+          if (userData.bank && userData.bank.token) {
+            axios.get(`http://localhost:5000/api/plaid/${user.uid}/getAccounts`)
+              .then((res1) => {
+                var data1 = res1.data;
+                console.log(data1);
+                if (data1.success) {
+                  console.log(data1.accounts);
+                  setAccounts(data1.accounts);
+                } else {
+                  console.log("abc");
+                  createToast(data1.error);
+                }
+              }).catch((error) => { createToast(error.message); });
+          }
+        } else {
+          console.log("def");
+          createToast(data.error);
+        }
+      }).catch((error) => { createToast(error.message); });
+  };
   const onSuccess = (token, metadata) => {
     //console.log(token);
     //console.log(metadata);
@@ -107,9 +109,11 @@ const Settings = ({ history }) => {
 
     const menu = (
       <Menu onClick={handleMenuClick}>
-        <Menu.Item key="1">Visa ending in 6942</Menu.Item>
-        <Menu.Item key="2">Discover ending in 5873</Menu.Item>
-        <Menu.Item key="3">American Express ending in 9835</Menu.Item>
+        {accounts.map((account) => {
+          return (
+          <Menu.Item key={account.account_id}>{account.name + " ending in " + account.mask}</Menu.Item>
+          )
+        })}
       </Menu>
     );
 
@@ -189,9 +193,9 @@ const Settings = ({ history }) => {
               <img src={BLM} alt="BLM" className="org-logo" />
               <div className="org-buttons">
                 <Dropdown overlay={menu}>
-                    <Button >
-                    Mastercard ending in 7981 <DownOutlined />
-                    </Button>
+                  <Button >
+                    Select Card <DownOutlined />
+                  </Button>
                 </Dropdown>
                 <Button danger={true} style={{width: 175, marginTop: 25}}>Delete Organization</Button>
               </div>
@@ -201,7 +205,7 @@ const Settings = ({ history }) => {
               <div className="org-buttons">
                 <Dropdown overlay={menu}>
                     <Button >
-                    Mastercard ending in 7981 <DownOutlined />
+                    Select Card <DownOutlined />
                     </Button>
                 </Dropdown>
                 <Button danger={true} style={{width: 175, marginTop: 25}}>Delete Organization</Button>
