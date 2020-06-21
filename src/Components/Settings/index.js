@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import fbase from '../../firebase';
+import { createToast } from '../../toast';
 
 import { PlaidLink } from 'react-plaid-link';
 
@@ -30,13 +31,13 @@ const Settings = ({ history }) => {
             if (data.success) {
                 // yeet
             } else {
-                console.log(data.error);
+                createToast(data.error);
             }
         }).catch((error) => {
-            console.log(error);
+            createToast(error);
         })
     };
-    
+
     if (loading) {
         // can replace?
         return (
@@ -65,32 +66,32 @@ const Settings = ({ history }) => {
         );
     } else {
         // user is logged in so display the page.
-        
+
         return (
             <div className="settings">
                 <div className="header">
                     <img src={Logo} alt="Make Cents Logo" className="logo" />
                     <div className="buttons">
-                    <Link to="/dashboard">
-                        <Button className="dashboard-button" size="large">
-                        Dashboard
+                        <Link to="/dashboard">
+                            <Button className="dashboard-button" size="large">
+                                Dashboard
                         </Button>
-                    </Link>
-                    <Link to="/about">
-                        <Button className="about-button" size="large">
-                        About
+                        </Link>
+                        <Link to="/about">
+                            <Button className="about-button" size="large">
+                                About
                         </Button>
-                    </Link>
-                    <Link to="/settings">
-                        <Button className="settings-button" size="large">
-                        Settings
+                        </Link>
+                        <Link to="/settings">
+                            <Button className="settings-button" size="large">
+                                Settings
                         </Button>
-                    </Link>
-                    <Link to="/">
-                        <Button className="log-out" size="large">
-                        Log Out
+                        </Link>
+                        <Link to="/">
+                            <Button className="log-out" size="large">
+                                Log Out
                         </Button>
-                    </Link>
+                        </Link>
                     </div>
                 </div>
                 <div className="account">
