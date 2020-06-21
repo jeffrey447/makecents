@@ -2,7 +2,8 @@ const app = require('firebase/app');
 require('firebase/firebase-auth');
 require('firebase/database');
 
-require('dotenv').config()
+// we need to process the .env file
+require('dotenv').config();
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
