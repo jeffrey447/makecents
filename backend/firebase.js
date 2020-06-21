@@ -1,6 +1,8 @@
-import app, { analytics } from 'firebase/app';
-import 'firebase/firebase-auth';
-import 'firebase/firebase-firestore';
+const app = require('firebase/app');
+require('firebase/firebase-auth');
+require('firebase/database');
+
+require('dotenv').config()
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -14,4 +16,4 @@ const firebaseConfig = {
 };
 
 app.initializeApp(firebaseConfig);
-export default app;
+module.exports = app;
