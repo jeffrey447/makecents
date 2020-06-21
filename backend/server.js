@@ -13,8 +13,9 @@ app.use(function(req, res, next) {
     next();
 });
 
-// configure routes
-app.use('/api/users', require('./routes/users'))
+// configure API routes
+app.use('/api/users', require('./routes/users'));
+app.use('/api/plaid', require('./routes/plaid'));
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
