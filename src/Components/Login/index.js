@@ -1,11 +1,10 @@
 import React from "react";
 import logo from '../../Assets/Logo.png';
+import { Form, Button, Input } from 'antd';
 import "./style.less";
 
 const Login = () => {
-    const handleLogin = (event) => {
-        event.preventDefault();
-
+    const handleLogin = values => {
         // handle login stuff
     }
 
@@ -16,17 +15,37 @@ const Login = () => {
                 <h1>Log In</h1>
             </div>
             <div className="input-container">
-                <form onSubmit={handleLogin}>
+                <Form onFinish={handleLogin}>
                     <div className="input-field">
-                        <input name="email" type="email" placeholder="Email" />
+                        <Form.Item name="email" rules={[
+                            {
+                                type: 'email',
+                                message: 'Invalid email!'
+                            },
+                            {
+                                required: true,
+                                message: 'Please input your email.'
+                            }
+                        ]}>
+                            <Input placeholder="Email" />
+                        </Form.Item>
                     </div>
                     <div className="input-field">
-                        <input name="password" type="password" placeholder="Password" />
+                        <Form.Item name="password" rules={[
+                            {
+                                required: true,
+                                message: 'Please input your password.'
+                            }
+                        ]}>
+                            <Input.Password placeholder="Password" />
+                        </Form.Item>
                     </div>
                     <div className="input-button">
-                        <button type="submit">Log In</button>
+                        <Form.Item>
+                            <Button shape="round" size="large" htmlType="submit">Log In</Button>
+                        </Form.Item>
                     </div>
-                </form>
+                </Form>
             </div>
         </div>
     );
