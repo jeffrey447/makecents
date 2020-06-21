@@ -6,6 +6,7 @@ import COC from "../../Assets/COC.png";
 import MBL from "../../Assets/MBL.png";
 import LDF from "../../Assets/LDF.png";
 import UBM from "../../Assets/UBM.png";
+import NBO from "../../Assets/NBO.png";
 import { Input } from 'antd';
 import "./style.less";
 
@@ -101,6 +102,18 @@ const SelectOrg = () => {
               <h2 className="org-title">UndocuBlack Network</h2>
               <p className="org-description">The UndocuBlack Network is a multigenerational network of currently and formerly undocumented Black people
                that fosters community, facilitates access resources, and contributes to transforming the realities of our people, so we are thriving and living our fullest lives.</p>
+            </div>
+          </div>
+          <div className = "org">
+            <div className="org-logo-container">
+              <a href="https://secure.actblue.com/donate/freeblackmamas2020" target="_blank" rel="noopener noreferrer">
+                <img src={NBO} alt="NBO" className="org-logo"/>
+              </a>
+            </div>
+            <div className="org-description-container">
+              <h2 className="org-title">National Bail Out</h2>
+              <p className="org-description">National Bail Out is a Black-led and Black-centered collective of abolitionist
+               organizers, lawyers and activists building a community-based movement to support our folks and end systems of pretrial detention and ultimately mass incarceration.</p>
             </div>
           </div>
         </div>

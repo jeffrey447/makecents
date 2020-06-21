@@ -21,9 +21,11 @@ class Firebase {
         this.db = app.database();
     }
 
-    login = async (email, password, onSuccess, onError) => {
-        await this.auth.signInWithEmailAndPassword(email, password)
-            .then(onSuccess => onSuccess)
+    login = (email, password, onSuccess, onError) => {
+        this.auth.signInWithEmailAndPassword(email, password)
+            .then((data) => {
+                if (onSuccess) onSuccess(data);
+            })
             .catch(onError => console.log(onError.message));
     }
 
@@ -38,7 +40,7 @@ class Firebase {
                     .set({
                         name: name,
                         email: email,
-                        transactions: [
+                        transactions: {
                             /*
                             {
                                 organization
@@ -47,12 +49,12 @@ class Firebase {
                                 donation
                             }
                             */
-                        ]
+                        }
                         // can create more fields later
                     }).then(() => {
                         console.log("Created new user!");
-                        return data;
-                    }).catch(onError => console.log(onError.message));
+                        if (onSuccess) onSuccess(data);
+                    }).catch(onError);
             })
             .catch(onError => console.log(onError.message));
 
