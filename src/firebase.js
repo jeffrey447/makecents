@@ -23,7 +23,9 @@ class Firebase {
 
     login = (email, password, onSuccess, onError) => {
         this.auth.signInWithEmailAndPassword(email, password)
-            .then(onSuccess)
+            .then((data) => {
+                if (onSuccess) onSuccess(data);
+            })
             .catch(onError => console.log(onError.message));
     }
 
@@ -56,7 +58,7 @@ class Firebase {
                         // can create more fields later
                     }).then(() => {
                         console.log("Created new user!");
-                        onSuccess(data);
+                        if (onSuccess) onSuccess(data);
                     }).catch(onError);
             })
             .catch(onError);
