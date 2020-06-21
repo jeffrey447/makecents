@@ -46,7 +46,10 @@ router.get('/:uid/getTransactions', async (req, res) => {
         } else {
             if (userData.bank && userData.bank.token) {
                 try {
-                    var res = await client.getTransactions(userData.bank.token, startDate, endDate);
+                    var res = await client.exchangePublicToken(userData.bank.token);
+                    var accessToken = res.access_token;
+                    
+                    res = await client.getTransactions(accessToken, startDate, endDate);
                     var trans = res.transactions;
     
                     res.json({
@@ -56,7 +59,7 @@ router.get('/:uid/getTransactions', async (req, res) => {
                 } catch (error) {
                     res.json({
                         success: false,
-                        error: error
+                        error: error.message
                     });
                 }
             } else {
@@ -81,7 +84,10 @@ router.get('/:uid/getAccounts', async (req, res) => {
     } else {
         if (userData.bank && userData.bank.token) {
             try {
-                var res = await client.getAccounts(userData.bank.token);
+                var res = await client.exchangePublicToken(userData.bank.token);
+                var accessToken = res.access_token;
+
+                res = await client.getAccounts(accessToken);
                 var accs = res.accounts;
 
                 res.json({
@@ -91,7 +97,7 @@ router.get('/:uid/getAccounts', async (req, res) => {
             } catch (error) {
                 res.json({
                     success: false,
-                    error: error
+                    error: error.message
                 });
             }
         } else {
@@ -129,7 +135,7 @@ router.get('/:uid/createStripeToken', async (req, res) => {
             } catch (error) {
                 res.json({
                     success: false,
-                    error: error
+                    error: error.message
                 });
             }
         } else {
