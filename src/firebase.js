@@ -24,7 +24,7 @@ class Firebase {
     login = (email, password, onSuccess, onError) => {
         this.auth.signInWithEmailAndPassword(email, password)
             .then(onSuccess)
-            .catch(onError);
+            .catch(onError => console.log(onError.message));
     }
 
     logout = () => {
@@ -61,7 +61,7 @@ class Firebase {
                     }).catch(onError);
             })
             .catch(onError);
-            
+
     }
 
     loggedIn = () => {
