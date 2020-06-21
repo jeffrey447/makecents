@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import fbase from "../../firebase";
 import { createToast } from "../../toast";
@@ -10,6 +11,7 @@ import { Button, Form, Input, Dropdown, Menu, message } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 
 import BLM from "../../Assets/BLM.png";
+import LDF from "../../Assets/LDF.png";
 
 import Header from "../Header";
 
@@ -70,7 +72,7 @@ const Settings = ({ history }) => {
     // user is logged in so display the page.
 
     function handleMenuClick(e) {
-      message.info("Click on menu item.");
+      message.info("Card selected");
       console.log("click", e);
     }
 
@@ -137,28 +139,47 @@ const Settings = ({ history }) => {
           </div>
           <div className="payment">
             <h1 className="payment-title">Payment and Organizations</h1>
-            <Button className="add-org" size="medium">
-              Add a new organization
-            </Button>
+            <div classname="payment-buttons">
+                <Link to="/selectorg">
+                    <Button className="add-org" size="large" style={{borderRadius: 5}}>
+                    Add a new organization
+                    </Button>
+                </Link>
+                <PlaidLink
+                clientName="Makes Cents"
+                env="sandbox"
+                product={["auth", "transactions"]}
+                publicKey={process.env.REACT_APP_PLAID_PUBLIC_KEY}
+                onSuccess={onSuccess}
+                style={{marginLeft: 15}}
+                >
+                Connect a bank account
+                </PlaidLink>
+            </div>
             <div className="org">
               <img src={BLM} alt="BLM" className="org-logo" />
-              <Dropdown overlay={menu}>
-                <Button>
-                  Mastercard ending in 7981 <DownOutlined />
-                </Button>
-              </Dropdown>
+              <div className="org-buttons">
+                <Dropdown overlay={menu}>
+                    <Button >
+                    Mastercard ending in 7981 <DownOutlined />
+                    </Button>
+                </Dropdown>
+                <Button danger={true} style={{width: 175, marginTop: 25}}>Delete Organization</Button>
+              </div>
+            </div>
+            <div className="org">
+              <img src={LDF} alt="LDF" className="org-logo" />
+              <div className="org-buttons">
+                <Dropdown overlay={menu}>
+                    <Button >
+                    Mastercard ending in 7981 <DownOutlined />
+                    </Button>
+                </Dropdown>
+                <Button danger={true} style={{width: 175, marginTop: 25}}>Delete Organization</Button>
+              </div>
             </div>
           </div>
         </div>
-        <PlaidLink
-          clientName="Makes Cents"
-          env="sandbox"
-          product={["auth", "transactions"]}
-          publicKey={process.env.REACT_APP_PLAID_PUBLIC_KEY}
-          onSuccess={onSuccess}
-        >
-          Connect a bank account
-        </PlaidLink>
       </div>
     );
   }
