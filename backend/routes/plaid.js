@@ -22,6 +22,87 @@ async function getUserData(uid) {
     return snapshot.val();
 }
 
+// /:uid/getTransactions?startDate=<>&endDate=<>
+router.get('/:uid/getTransactions', async (req, res) => {
+    var uid = req.params.uid;
+    var userData = await getUserData(uid);
+
+    var startDate = req.query.startDate;
+    var endDate = req.query.endDate;
+
+    if ((startDate == null) || (endDate == null)) {
+        // missing data
+
+        res.json({
+            success: false,
+            error: "Provide a start and end date for the transactions that you would like to receive from the user."
+        });
+    } else {
+        if (!userData) {
+            res.json({
+                success: false,
+                error: "User not found."
+            });
+        } else {
+            if (userData.bank && userData.bank.token) {
+                try {
+                    var res = await client.getTransactions(userData.bank.token, startDate, endDate);
+                    var trans = res.transactions;
+    
+                    res.json({
+                        success: true,
+                        transactions: trans
+                    });
+                } catch (error) {
+                    res.json({
+                        success: false,
+                        error: error
+                    });
+                }
+            } else {
+                res.json({
+                    success: false,
+                    error: "User has not connected a bank account."
+                });
+            }
+        }
+    }
+});
+
+router.get('/:uid/getAccounts', async (req, res) => {
+    var uid = req.params.uid;
+    var userData = await getUserData(uid);
+
+    if (!userData) {
+        res.json({
+            success: false,
+            error: "User not found."
+        });
+    } else {
+        if (userData.bank && userData.bank.token) {
+            try {
+                var res = await client.getAccounts(userData.bank.token);
+                var accs = res.accounts;
+
+                res.json({
+                    success: true,
+                    accounts: accs
+                });
+            } catch (error) {
+                res.json({
+                    success: false,
+                    error: error
+                });
+            }
+        } else {
+            res.json({
+                success: false,
+                error: "User has not connected a bank account."
+            });
+        }
+    }
+});
+
 router.get('/:uid/createStripeToken', async (req, res) => {
     var uid = req.params.uid;
     var userData = await getUserData(uid);
