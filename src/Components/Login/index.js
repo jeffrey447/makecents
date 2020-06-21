@@ -2,17 +2,17 @@ import React from "react";
 import logo from '../../Assets/Logo.png';
 import { Form, Button, Input } from 'antd';
 import fbase from '../../firebase';
+import { createToast } from '../../toast';
 import "./style.less";
 
 const Login = ({ history }) => {
 
     const handleLogin = values => {
         // handle login stuff
-        console.log(values);
         fbase.login(values.email, values.password, (data) => {
             history.push("/dashboard");
         }, (error) => {
-            console.log(error);
+            createToast(error);
         });
     }
 

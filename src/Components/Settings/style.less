@@ -1,6 +1,6 @@
 .settings{
     padding: 16px;
-  
+    width: 100%;
     .header {
       display: flex;
       flex-direction: row;
@@ -54,12 +54,54 @@
       }
     }
   
-    .account {
-      .account-title {
-        color: white;
-        font-family: "Montserrat";
+    .settings-content {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-evenly;
+      margin-top: 150px;
+      .account {
+        width: 40%;
+        .account-title {
+          color: white;
+          font-family: "Montserrat";
+        }
+        .email-title {
+          color: white;
+          font-family: "Montserrat";
+        }
+        .email-input {
+          width: 50%;
+        }
+        .password-title {
+          color: white;
+          font-family: "Montserrat";
+          margin-top: 25px;
+        }
+        .password-input {
+          width: 50%;
+        }
       }
+  
+      .payment {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .payment-title {
+          color: white;
+          font-family: "Montserrat";
+        }
+        .org {
+          .org-logo {
+            height: 120px;
+            width: 120px;
+          }
+        }
+      }
+
     }
+    
 }
 
   
