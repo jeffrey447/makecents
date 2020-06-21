@@ -62,7 +62,7 @@ class Firebase {
                         if (onSuccess) onSuccess(data);
                     }).catch(onError);
             })
-            .catch(onError => console.log(onError.message));
+            .catch(onError);
 
     }
 

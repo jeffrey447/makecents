@@ -63,6 +63,36 @@ router.post('/:uid/add_bank', async (req, res) => {
     }
 });
 
+router.post('/:uid/remove_bank', async (req, res) => {
+    var uid = req.params.uid;
+    var userData = await getUserData(uid);
+
+    if (!userData) {
+        res.json({
+            success: false,
+            error: "User not found."
+        });
+    } else {
+        try {
+            await db.ref(`/users/${uid}`).update({
+                bank: {
+                    token: null,
+                    name: null
+                }
+            });
+    
+            res.json({
+                success: true
+            });
+        } catch (error) {
+            res.json({
+                success: false,
+                error: error
+            });
+        }
+    }
+});
+
 /*  TRANSACTIONS  */
 router.get('/:uid/transactions', async (req, res) => {
     var uid = req.params.uid;
@@ -81,7 +111,7 @@ router.get('/:uid/transactions', async (req, res) => {
     }
 });
 
-router.post('/:uid/card/:tid/add', async (req, res) => {
+router.post('/:uid/transactions/:tid/add', async (req, res) => {
     var uid = req.params.uid;
     var tid = req.params.tid; // transaction id
 
