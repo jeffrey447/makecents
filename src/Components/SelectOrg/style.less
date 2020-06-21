@@ -36,7 +36,11 @@
           }
         }
         .org-description-container {
+          border: 2px solid #333;
+          border-radius: 15px;
           margin-right: 200px;
+          padding: 5px;
+          transition: border 0.1s linear;
           .org-title {
             color: white;
             font-family: "Montserrat";
@@ -46,6 +50,12 @@
             color: white;
             font-family: "Montserrat";
             font-size: 16px;
+          }
+
+          &:hover {
+            cursor: pointer;
+            border: 2px solid #777;
+            transition: border 0.1s linear;
           }
         }
       }

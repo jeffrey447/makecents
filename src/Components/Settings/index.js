@@ -173,19 +173,24 @@ const Settings = ({ history }) => {
           <div className="payment">
             <h1 className="payment-title">Payment and Organizations</h1>
             <div className="payment-buttons">
-                <Link to="/selectorg">
-                    <Button className="add-org" size="large" style={{borderRadius: 5}}>
-                    Add a new organization
+              <Link to="/selectorg">
+                <Button className="add-org" size="large" style={{ borderRadius: 5 }}>
+                  Add a new organization
                     </Button>
-                </Link>
-                <PlaidLink
+              </Link>
+              <PlaidLink
                 clientName="Makes Cents"
                 env="sandbox"
                 product={["auth", "transactions"]}
                 publicKey={process.env.REACT_APP_PLAID_PUBLIC_KEY}
                 onSuccess={onSuccess}
-                style={{marginLeft: 15}}
-                >
+                style={{
+                  height: '40px',
+                  marginLeft: 15,
+                  padding: '6.4px 15px',
+                  outline: '0',
+                  border: '1px'
+                }}>
                 Connect a bank account
                 </PlaidLink>
             </div>
@@ -197,7 +202,7 @@ const Settings = ({ history }) => {
                     Select Card <DownOutlined />
                   </Button>
                 </Dropdown>
-                <Button danger={true} style={{width: 175, marginTop: 25}}>Delete Organization</Button>
+                <Button danger={true} style={{ width: 175, marginTop: 25 }}>Delete Organization</Button>
               </div>
             </div>
             <div className="org">
@@ -208,7 +213,7 @@ const Settings = ({ history }) => {
                     Select Card <DownOutlined />
                     </Button>
                 </Dropdown>
-                <Button danger={true} style={{width: 175, marginTop: 25}}>Delete Organization</Button>
+                <Button danger={true} style={{ width: 175, marginTop: 25 }}>Delete Organization</Button>
               </div>
             </div>
           </div>
