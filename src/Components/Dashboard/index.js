@@ -1,6 +1,7 @@
 import React from "react";
 import fbase from "../../firebase";
 import { DatePicker, Select } from "antd";
+import { Line } from "react-chartjs-2";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import Header from "../Header";
@@ -8,6 +9,33 @@ import Header from "../Header";
 import "./style.less";
 
 const { Option } = Select;
+
+const data = {
+  labels: ["January", "February", "March", "April", "May", "June"],
+  datasets: [
+    {
+      label: "Mastercard",
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(75,192,192,0.4)",
+      borderColor: "rgba(75,192,192,1)",
+      borderCapStyle: "butt",
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: "miter",
+      pointBorderColor: "rgba(75,192,192,1)",
+      pointBackgroundColor: "#fff",
+      pointBorderWidth: 1,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: "rgba(75,192,192,1)",
+      pointHoverBorderColor: "rgba(220,220,220,1)",
+      pointHoverBorderWidth: 2,
+      pointRadius: 1,
+      pointHitRadius: 10,
+      data: [46, 65, 59, 80, 57, 63],
+    },
+  ],
+};
 
 const Dashboard = ({ history }) => {
   const [user, loading, error] = useAuthState(fbase.auth);
@@ -54,6 +82,15 @@ const Dashboard = ({ history }) => {
               <Option value="jack">Jack</Option>
               <Option value="jack">Jack</Option>
             </Select>
+          </div>
+
+          <div style={{ margin: 16 }}>
+            <Line
+              data={data}
+              width={800}
+              height={250}
+              options={{ maintainAspectRatio: true }}
+            />
           </div>
 
           <div className="split">

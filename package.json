@@ -20,6 +20,7 @@
     "less-loader": "^6.1.1",
     "react": "^16.13.1",
     "react-app-rewired": "^2.1.6",
+    "react-chartjs-2": "^2.9.0",
     "react-dom": "^16.13.1",
     "react-firebase-hooks": "^2.2.0",
     "react-plaid-link": "^2.3.0-alpha.0",
