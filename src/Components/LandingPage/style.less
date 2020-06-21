@@ -1,24 +1,62 @@
 .landing-page {
-    height: 100vh;
-    background-color: black;
+  padding: 16px;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
     .logo {
-        width: 277px;
-        height: 49px;
-        margin-left: 40px;
-        margin-top: 40px;
+      width: 277px;
+      height: 49px;
     }
-    .header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        width: 95%;
-        margin-right: 16px;
-    }
-    .buttons {
-        display: flex;
-        flex-direction: row
-    }
-}
 
+    .buttons {
+      display: flex;
+      flex-direction: row;
+
+      .login {
+        background-color: black;
+        border-color: black;
+        color: white;
+        font-family: "Montserrat";
+        font-weight: 600;
+        margin-right: 16px;
+      }
+
+      .sign-up {
+        color: black;
+        font-family: "Montserrat";
+        font-weight: 600;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 64px;
+
+    .paragraph-button {
+      width: 50%;
+      .paragraph {
+        font-size: 22px;
+        color: white;
+        font-family: "Montserrat";
+      }
+    }
+
+    .sign-up {
+      color: black;
+      font-family: "Montserrat";
+      font-weight: 600;
+      border-radius: 5px;
+    }
+
+    .banner {
+      height: 400px;
+    }
+  }
+}
