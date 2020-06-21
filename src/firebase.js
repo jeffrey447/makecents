@@ -45,7 +45,7 @@ class Firebase {
                     .set({
                         name: name,
                         email: email,
-                        transactions: [
+                        transactions: {
                             /*
                             {
                                 organization
@@ -54,7 +54,7 @@ class Firebase {
                                 donation
                             }
                             */
-                        ]
+                        }
                         // can create more fields later
                     }).then(() => {
                         console.log("Created new user!");
