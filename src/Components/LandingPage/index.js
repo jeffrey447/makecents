@@ -12,8 +12,8 @@ const LandingPage = () => {
                 
                 <img src={Logo} alt="Logo" className="logo" />
                 <div className="buttons">
-                    <Button>Login</Button>
-                    <Button>Sign Up</Button>
+                    <Button className="login">Login</Button>
+                    <Button className="sign-up">Sign Up</Button>
                 </div>
             </div>
         </div>
