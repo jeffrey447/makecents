@@ -4,11 +4,16 @@ import { Form, Button, Input } from 'antd';
 import fbase from '../../firebase';
 import "./style.less";
 
-const Signup = () => {
+const Signup = ({ history }) => {
 
   const handleSignup = values => {
     // handle signup stuff
     console.log(values);
+    fbase.register(values.name, values.email, values.password, (data) => {
+      history.push("/dashboard");
+    }, (error) => {
+      console.log(error);
+    });
   }
 
   return (

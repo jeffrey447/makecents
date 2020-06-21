@@ -33,13 +33,8 @@ class Firebase {
         this.auth.signOut();
     }
 
-    register = (name, email, password, onSuccess, onError) => {
-        if (!(name.trim().length > 0)) {
-            onError("Must provide your name.");
-            return;
-        }
-
-        this.auth.createUserWithEmailAndPassword(email, password)
+    register = async (name, email, password, onSuccess, onError) => {
+        await this.auth.createUserWithEmailAndPassword(email, password)
             .then((data) => {
                 this.db.ref(`/users/${data.user.uid}`)
                     .set({
@@ -61,7 +56,7 @@ class Firebase {
                         if (onSuccess) onSuccess(data);
                     }).catch(onError);
             })
-            .catch(onError);
+            .catch(onError => console.log(onError.message));
 
     }
 
