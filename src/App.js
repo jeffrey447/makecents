@@ -45,9 +45,6 @@ const App = () => {
           <Route path="/history">
             <History />
           </Route>
-          <Route path="/">
-            <LandingPage />
-          </Route>
           <Route path="/login">
             <Login />
           </Route>
@@ -56,6 +53,9 @@ const App = () => {
           </Route>
           <Route path="/signup">
             <Signup />
+          </Route>
+          <Route path="/">
+            <LandingPage />
           </Route>
         </Switch>
       </div>
