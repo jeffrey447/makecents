@@ -44,13 +44,7 @@ const Dashboard = ({ history }) => {
     return (
       <div className="dashboard">
         <Header />
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
+        <div className="main">
           <h1 style={{ color: "white", fontSize: 40 }}>Donation Activity</h1>
           <div>
             <DatePicker style={{ width: 200 }} />
@@ -62,7 +56,52 @@ const Dashboard = ({ history }) => {
             </Select>
           </div>
 
-          <canvas id="myChart" width="400" height="400"></canvas>
+          <div className="split">
+            <div className="totals">
+              <h3 className="title">Total Donations Today</h3>
+              <p className="value">$0.41</p>
+              <h3 className="title">Total Donations from 6/13/20 - 6/20/20</h3>
+              <p className="value">$1.41</p>
+              <h3 className="title">Total Donations for June 2020</h3>
+              <p className="value">$25.26</p>
+              <h3 className="title">Total Donations from MasterCard</h3>
+              <p className="value">$65.41</p>
+            </div>
+
+            <div className="transactions">
+              <h3 className="title">Recent Activity</h3>
+              <div className="list">
+                <div>
+                  <h4 className="sub-title">Date</h4>
+                  <p className="value">6/15/20</p>
+                  <p className="value">6/15/20</p>
+                  <p className="value">6/15/20</p>
+                  <p className="value">6/15/20</p>
+                </div>
+                <div>
+                  <h4 className="sub-title">Description</h4>
+                  <p className="value">Subscription</p>
+                  <p className="value">Subscription</p>
+                  <p className="value">Subscription</p>
+                  <p className="value">Subscription</p>
+                </div>
+                <div>
+                  <h4 className="sub-title">Purchase Price</h4>
+                  <p className="value">$15.15</p>
+                  <p className="value">$15.15</p>
+                  <p className="value">$15.15</p>
+                  <p className="value">$15.15</p>
+                </div>
+                <div>
+                  <h4 className="sub-title">Amount Donated</h4>
+                  <p className="don-value">$0.85</p>
+                  <p className="don-value">$0.85</p>
+                  <p className="don-value">$0.85</p>
+                  <p className="don-value">$0.85</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
