@@ -56,7 +56,7 @@ router.get('/:uid/getTransactions', async (req, res) => {
                 } catch (error) {
                     res.json({
                         success: false,
-                        error: error
+                        error: error.message
                     });
                 }
             } else {
@@ -91,7 +91,7 @@ router.get('/:uid/getAccounts', async (req, res) => {
             } catch (error) {
                 res.json({
                     success: false,
-                    error: error
+                    error: error.message
                 });
             }
         } else {
@@ -129,7 +129,7 @@ router.get('/:uid/createStripeToken', async (req, res) => {
             } catch (error) {
                 res.json({
                     success: false,
-                    error: error
+                    error: error.message
                 });
             }
         } else {

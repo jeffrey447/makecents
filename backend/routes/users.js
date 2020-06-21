@@ -59,7 +59,7 @@ router.post('/:uid/add_bank', async (req, res) => {
         } catch (error) {
             res.json({
                 success: false,
-                error: error
+                error: error.message
             });
         }
     }
@@ -90,7 +90,7 @@ router.post('/:uid/remove_bank', async (req, res) => {
         } catch (error) {
             res.json({
                 success: false,
-                error: error
+                error: error.message
             });
         }
     }
@@ -154,7 +154,7 @@ router.post('/:uid/transactions/:tid/add', async (req, res) => {
         } catch (error) {
             res.json({
                 success: false,
-                error: error
+                error: error.message
             });
         }
     }
