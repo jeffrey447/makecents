@@ -18,7 +18,7 @@ class Firebase {
         app.initializeApp(firebaseConfig);
 
         this.auth = app.auth();
-        this.db = app.firestore();
+        this.db = app.database();
     }
 
     login = (email, password, onSuccess, onError) => {
@@ -43,7 +43,17 @@ class Firebase {
                     .doc(data.user.uid)
                     .set({
                         name: name,
-                        email: email
+                        email: email,
+                        transactions: [
+                            /*
+                            {
+                                organization
+                                date
+                                amount
+                                donation
+                            }
+                            */
+                        ]
                         // can create more fields later
                     }).then(() => {
                         console.log("Created new user!");
