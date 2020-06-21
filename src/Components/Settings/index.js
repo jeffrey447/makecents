@@ -93,6 +93,9 @@ const Settings = ({ history }) => {
                     </Link>
                     </div>
                 </div>
+                <div className="account">
+                    <h1 className="account-title">Account</h1>
+                </div>
                 <PlaidLink
                     clientName="Makes Cents"
                     env="sandbox"
