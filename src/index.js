@@ -7,8 +7,10 @@ import Dashboard from "./Components/Dashboard";
 import History from "./Components/History";
 import LandingPage from "./Components/LandingPage";
 import Login from "./Components/Login";
+import SelectOrg from "./Components/SelectOrg";
 import Settings from "./Components/Settings";
 import Signup from "./Components/Signup";
+
 
 import "./index.css";
 
@@ -33,6 +35,9 @@ const App = () => {
         </Route>
         <Route exact path="/login">
           <Login />
+        </Route>
+        <Route exact path="/selectorg">
+          <SelectOrg />
         </Route>
         <Route exact path="/settings">
           <Settings />
