@@ -33,7 +33,7 @@ const LandingPage = () => {
             injustice, state-sanctioned violence, and anti-Black racism. Only
             together and through action are we able to make a change. </p> <p className="paragraph">Make Cents
             is a platform that enables you to automatically donate spare change to various organizations that
-            support Black communities fight injustice.</p><p className="paragraph">Sign up now and donate your
+            support Black communities in fighting injustice.</p><p className="paragraph">Sign up now and donate your
             spare change to an issue that makes sense.</p>
           
           <Link to="/signup">
