@@ -179,7 +179,7 @@ const Settings = ({ history }) => {
                     </Button>
               </Link>
               <PlaidLink
-                clientName="Makes Cents"
+                clientName="Make Cents"
                 env="sandbox"
                 product={["auth", "transactions"]}
                 publicKey={process.env.REACT_APP_PLAID_PUBLIC_KEY}
