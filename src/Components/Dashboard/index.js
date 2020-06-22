@@ -1,6 +1,5 @@
 import React from "react";
 import fbase from "../../firebase";
-import { DatePicker, Select } from "antd";
 import { Line } from "react-chartjs-2";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -8,13 +7,11 @@ import Header from "../Header";
 
 import "./style.less";
 
-const { Option } = Select;
-
 const data = {
   labels: ["January", "February", "March", "April", "May", "June"],
   datasets: [
     {
-      label: "Mastercard",
+      label: "MasterCard",
       fill: false,
       lineTension: 0,
       backgroundColor: "rgba(75,192,192,0.4)",
@@ -32,7 +29,7 @@ const data = {
       pointHoverBorderWidth: 2,
       pointRadius: 1,
       pointHitRadius: 10,
-      data: [46, 65, 59, 80, 57, 63],
+      data: [8, 10, 13, 12, 10, 15],
     },
   ],
 };
@@ -74,15 +71,6 @@ const Dashboard = ({ history }) => {
         <Header />
         <div className="main">
           <h1 style={{ color: "white", fontSize: 40 }}>Donation Activity</h1>
-          <div>
-            <DatePicker style={{ width: 200 }} />
-            <Select defaultValue="jack" style={{ width: 200, marginLeft: 16 }}>
-              <Option value="jack">Jack</Option>
-              <Option value="jack">Jack</Option>
-              <Option value="jack">Jack</Option>
-              <Option value="jack">Jack</Option>
-            </Select>
-          </div>
 
           <div style={{ margin: 16 }}>
             <Line
@@ -98,9 +86,9 @@ const Dashboard = ({ history }) => {
               <h3 className="title">Total Donations Today</h3>
               <p className="value">$0.41</p>
               <h3 className="title">Total Donations from 6/13/20 - 6/20/20</h3>
-              <p className="value">$1.41</p>
+              <p className="value">$2.41</p>
               <h3 className="title">Total Donations for June 2020</h3>
-              <p className="value">$25.26</p>
+              <p className="value">$15.26</p>
               <h3 className="title">Total Donations from MasterCard</h3>
               <p className="value">$65.41</p>
             </div>
@@ -110,31 +98,31 @@ const Dashboard = ({ history }) => {
               <div className="list">
                 <div>
                   <h4 className="sub-title">Date</h4>
-                  <p className="value">6/15/20</p>
-                  <p className="value">6/15/20</p>
-                  <p className="value">6/15/20</p>
-                  <p className="value">6/15/20</p>
+                  <p className="value">6/21/20</p>
+                  <p className="value">6/19/20</p>
+                  <p className="value">6/17/20</p>
+                  <p className="value">6/16/20</p>
                 </div>
                 <div>
                   <h4 className="sub-title">Description</h4>
-                  <p className="value">Subscription</p>
-                  <p className="value">Subscription</p>
-                  <p className="value">Subscription</p>
-                  <p className="value">Subscription</p>
+                  <p className="value">Ralphs</p>
+                  <p className="value">Amazon.com</p>
+                  <p className="value">Tapioca Express</p>
+                  <p className="value">85 Degrees</p>
                 </div>
                 <div>
                   <h4 className="sub-title">Purchase Price</h4>
-                  <p className="value">$15.15</p>
-                  <p className="value">$15.15</p>
-                  <p className="value">$15.15</p>
-                  <p className="value">$15.15</p>
+                  <p className="value">$15.59</p>
+                  <p className="value">$15.14</p>
+                  <p className="value">$5.25</p>
+                  <p className="value">$10.72</p>
                 </div>
                 <div>
                   <h4 className="sub-title">Amount Donated</h4>
-                  <p className="don-value">$0.85</p>
-                  <p className="don-value">$0.85</p>
-                  <p className="don-value">$0.85</p>
-                  <p className="don-value">$0.85</p>
+                  <p className="don-value">$0.41</p>
+                  <p className="don-value">$0.86</p>
+                  <p className="don-value">$0.75</p>
+                  <p className="don-value">$0.28</p>
                 </div>
               </div>
             </div>
