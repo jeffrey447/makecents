@@ -11,7 +11,7 @@ const About = () => {
       <div className="content">
           <p className="paragraph">
           Social injustice speaks volumes about the world we live in today. Time after time in history, 
-          Black lives have been dismissed and systemically targeted in a negative light- we stand in solidarity against repetition of Black oppression in our history. 
+          Black lives have been dismissed and systemically targeted in a negative light; we stand in solidarity against repetition of Black oppression in our history. 
           Discrimination towards Black lives must end.</p> 
           <p className="paragraph"> Here at Make Cents, every cent counts towards fighting social injustice, no matter how big or small. 
           By choosing to use Make Cents, each purchase made on a debit or credit card will be rounded up to the nearest dollar, and the difference will 
