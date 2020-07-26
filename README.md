@@ -1,4 +1,6 @@
-🏅 Def Hacks 2020 Project (Script Foundation: Social Team of the Year): Providing people with the opportunity to donate their change to various organizations dedicated to fight racial injustice. #BLM
+🏅 Def Hacks 2020 Project (Script Foundation: Social Team of the Year)
+Providing people with the opportunity to donate their change to various organizations dedicated to fight racial injustice. #BLM
+
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
